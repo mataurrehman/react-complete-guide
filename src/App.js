@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
 import Person from './Person/person'
-
 class App extends Component {
   state = {
     persons: [
@@ -9,9 +8,13 @@ class App extends Component {
       {id:2, name:"Ahmad", "age":"13"},
       {id:3, name:"Mushi", "age":"29"},
     ],
-    showPersons: true
+    showPersons: false
   }
-  deletePersonHandler = (personIndex) => {
+  handleTogglePeople = () => {
+    let toShow = this.state.showPersons;
+    this.setState({showPersons: !toShow});
+  }
+   deletePersonHandler = (personIndex) => {
     const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
     this.setState({persons})
@@ -27,6 +30,13 @@ class App extends Component {
     this.setState({persons})
   };
   render(){
+    const style = {
+      backgroundColor:'white',
+      font:'inherit',
+      border:'1px solid blue',
+      padding:'8px',
+      cursor:'pointer'
+    };
     let persons = null;
     if(this.state.showPersons) {
       persons = (
@@ -43,10 +53,23 @@ class App extends Component {
           }
         </div>
       )
+      style.backgroundColor='red';
+    }
+    let classes = [];
+    if(this.state.persons.length<=2) {
+      classes.push('red');
+    } if(this.state.persons.length<=1){
+      classes.push('bold');
     }
     return (
       <div className="App">
-        <button onClick={this.handleChangeName}>Change Name</button>
+        <h1>Hi, I am a react app</h1>
+        <p className={classes.join(" ")}>This is really working</p>
+
+        <button
+          onClick={() => this.handleTogglePeople()}
+          style={style}
+        >Toggle Users</button>
         {persons}
       </div>
     );
