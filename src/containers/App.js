@@ -1,12 +1,11 @@
-import React, {Component} from 'react';
+import React, {PureComponent, Component} from 'react';
 import styles from '../containers/App.css';
 import Persons from '../components/Persons/Persons'
 import Cockpit from '../components/Cockpit/Cockpit'
 import ErrorBoundary from '../components/ErrorBoundary/ErrorBoundary'
-class App extends Component {
+class App extends PureComponent {
   constructor(props){
     super(props);
-    console.log('[app.js]', props);
   }
   state = {
     persons: [
@@ -48,15 +47,14 @@ class App extends Component {
         </div>
       )
     }
-    return (
-      <div className={styles.App}>
-        <Cockpit
-          persons = {this.state.persons}
-          showPersons = {this.state.showPersons}
-          clicked = {this.handleTogglePerson}
-        />
-        {persons}
-      </div>
+    return (<div className={styles.App}>
+      <Cockpit
+        persons = {this.state.persons}
+        showPersons = {this.state.showPersons}
+        clicked = {this.handleTogglePerson}
+      />
+      {persons}
+    </div>
     );
   }
 }
