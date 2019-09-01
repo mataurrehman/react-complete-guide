@@ -1,4 +1,4 @@
-BuildControls {
+.BuildControls {
     width: 100%;
     background-color: #cf8f2e;
     display: flex;
@@ -9,7 +9,7 @@ BuildControls {
     padding: 10px 0;
 
     /* fix to bottom of page */
-    position: absolute;
+    position: fix;
     bottom: 0;
     left: 0;
 }
@@ -56,3 +56,4 @@ BuildControls {
     100% {
         transform: scale(1);
     }
+}
