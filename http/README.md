@@ -374,7 +374,7 @@ For example:
 ### `Button.js`
 
 ```js
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class Button extends Component {
   render() {
@@ -388,8 +388,8 @@ export default Button; // Don’t forget to use export default!
 ### `DangerButton.js`
 
 ```js
-import React, { Component } from "react";
-import Button from "./Button"; // Import a component from another file
+import React, { Component } from 'react';
+import Button from './Button'; // Import a component from another file
 
 class DangerButton extends Component {
   render() {
@@ -423,7 +423,7 @@ Here is an example:
 ### `moduleA.js`
 
 ```js
-const moduleA = "Hello";
+const moduleA = 'Hello';
 
 export { moduleA };
 ```
@@ -431,11 +431,11 @@ export { moduleA };
 ### `App.js`
 
 ```js
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class App extends Component {
   handleClick = () => {
-    import("./moduleA")
+    import('./moduleA')
       .then(({ moduleA }) => {
         // Use moduleA
       })
@@ -479,8 +479,8 @@ This project setup uses [Webpack](https://webpack.js.org/) for handling all asse
 ### `Button.js`
 
 ```js
-import React, { Component } from "react";
-import "./Button.css"; // Tell Webpack that Button.js uses these styles
+import React, { Component } from 'react';
+import './Button.css'; // Tell Webpack that Button.js uses these styles
 
 class Button extends Component {
   render() {
@@ -574,8 +574,8 @@ To enable importing files without using relative paths, you can add the `--inclu
 This will allow you to do imports like
 
 ```scss
-@import "styles/_colors.scss"; // assuming a styles directory under src/
-@import "nprogress/nprogress"; // importing a css file from the nprogress node module
+@import 'styles/_colors.scss'; // assuming a styles directory under src/
+@import 'nprogress/nprogress'; // importing a css file from the nprogress node module
 ```
 
 At this point you might want to remove all CSS files from the source control, and add `src/**/*.css` to your `.gitignore` file. It is generally a good practice to keep the build products outside of the source control.
@@ -633,8 +633,8 @@ To reduce the number of requests to the server, importing images that are less t
 Here is an example:
 
 ```js
-import React from "react";
-import logo from "./logo.png"; // Tell Webpack this JS file uses this image
+import React from 'react';
+import logo from './logo.png'; // Tell Webpack this JS file uses this image
 
 console.log(logo); // /logo.84287d09.png
 
@@ -760,8 +760,8 @@ yarn add react-bootstrap bootstrap@3
 Import Bootstrap CSS and optionally Bootstrap theme CSS in the beginning of your `src/index.js` file:
 
 ```js
-import "bootstrap/dist/css/bootstrap.css";
-import "bootstrap/dist/css/bootstrap-theme.css";
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
 // Put any other imports below so that CSS from your
 // components takes precedence over default styles.
 ```
@@ -769,7 +769,7 @@ import "bootstrap/dist/css/bootstrap-theme.css";
 Import required React Bootstrap components within `src/App.js` file or your custom component files:
 
 ```js
-import { Navbar, Jumbotron, Button } from "react-bootstrap";
+import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 ```
 
 Now you are ready to use the imported React Bootstrap components within your component hierarchy defined in the render method. Here is an example [`App.js`](https://gist.githubusercontent.com/gaearon/85d8c067f6af1e56277c82d19fd4da7b/raw/6158dd991b67284e9fc8d70b9d973efe87659d72/App.js) redone using React Bootstrap.
@@ -860,7 +860,7 @@ a `.env` file. Both of these ways are described in the next few sections.
 Having access to the `NODE_ENV` is also useful for performing actions conditionally:
 
 ```js
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV !== 'production') {
   analytics.disable();
 }
 ```
@@ -1234,9 +1234,9 @@ To create tests, add `it()` (or `test()`) blocks with the name of the test and i
 Jest provides a built-in `expect()` global function for making assertions. A basic test could look like this:
 
 ```js
-import sum from "./sum";
+import sum from './sum';
 
-it("sums numbers", () => {
+it('sums numbers', () => {
   expect(sum(1, 2)).toEqual(3);
   expect(sum(2, 2)).toEqual(4);
 });
@@ -1252,12 +1252,12 @@ There is a broad spectrum of component testing techniques. They range from a “
 Different projects choose different testing tradeoffs based on how often components change, and how much logic they contain. If you haven’t decided on a testing strategy yet, we recommend that you start with creating simple smoke tests for your components:
 
 ```js
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
 
-it("renders without crashing", () => {
-  const div = document.createElement("div");
+it('renders without crashing', () => {
+  const div = document.createElement('div');
   ReactDOM.render(<App />, div);
 });
 ```
@@ -1281,11 +1281,11 @@ yarn add enzyme react-test-renderer
 You can write a smoke test with it too:
 
 ```js
-import React from "react";
-import { shallow } from "enzyme";
-import App from "./App";
+import React from 'react';
+import { shallow } from 'enzyme';
+import App from './App';
 
-it("renders without crashing", () => {
+it('renders without crashing', () => {
   shallow(<App />);
 });
 ```
@@ -1297,11 +1297,11 @@ You can read the [Enzyme documentation](http://airbnb.io/enzyme/) for more testi
 Here is an example from Enzyme documentation that asserts specific output, rewritten to use Jest matchers:
 
 ```js
-import React from "react";
-import { shallow } from "enzyme";
-import App from "./App";
+import React from 'react';
+import { shallow } from 'enzyme';
+import App from './App';
 
-it("renders welcome message", () => {
+it('renders welcome message', () => {
   const wrapper = shallow(<App />);
   const welcome = <h2>Welcome to React</h2>;
   // expect(wrapper.contains(welcome)).to.equal(true);
@@ -1333,7 +1333,7 @@ yarn add jest-enzyme
 Import it in [`src/setupTests.js`](#initializing-test-environment) to make its matchers available in every test:
 
 ```js
-import "jest-enzyme";
+import 'jest-enzyme';
 ```
 
 ### Using Third Party Assertion Libraries
@@ -1343,8 +1343,8 @@ We recommend that you use `expect()` for assertions and `jest.fn()` for spies. I
 However, if you are used to other libraries, such as [Chai](http://chaijs.com/) and [Sinon](http://sinonjs.org/), or if you have existing code using them that you’d like to port over, you can import them normally like this:
 
 ```js
-import sinon from "sinon";
-import { expect } from "chai";
+import sinon from 'sinon';
+import { expect } from 'chai';
 ```
 
 and then use them in your tests like you normally do.
@@ -1363,7 +1363,7 @@ For example:
 const localStorageMock = {
   getItem: jest.fn(),
   setItem: jest.fn(),
-  clear: jest.fn()
+  clear: jest.fn(),
 };
 global.localStorage = localStorageMock;
 ```
@@ -1738,14 +1738,14 @@ You don’t necessarily need a static server in order to run a Create React App 
 Here’s a programmatic example using [Node](https://nodejs.org/) and [Express](http://expressjs.com/):
 
 ```javascript
-const express = require("express");
-const path = require("path");
+const express = require('express');
+const path = require('path');
 const app = express();
 
-app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.join(__dirname, 'build')));
 
-app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 app.listen(9000);
@@ -2144,20 +2144,20 @@ To add a specific Moment.js locale to your bundle, you need to import it explici
 For example:
 
 ```js
-import moment from "moment";
-import "moment/locale/fr";
+import moment from 'moment';
+import 'moment/locale/fr';
 ```
 
 If import multiple locales this way, you can later switch between them by calling `moment.locale()` with the locale name:
 
 ```js
-import moment from "moment";
-import "moment/locale/fr";
-import "moment/locale/es";
+import moment from 'moment';
+import 'moment/locale/fr';
+import 'moment/locale/es';
 
 // ...
 
-moment.locale("fr");
+moment.locale('fr');
 ```
 
 This will only work for locales that have been explicitly imported before.
