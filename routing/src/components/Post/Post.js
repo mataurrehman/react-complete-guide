@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 import './Post.css';
 
@@ -16,4 +17,4 @@ post.propTypes = {
   author: PropTypes.string,
   clicked: PropTypes.func,
 };
-export default post;
+export default withRouter(post);
