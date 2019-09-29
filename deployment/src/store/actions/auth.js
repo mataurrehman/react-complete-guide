@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import * as actionTypes from './actionTypes';
 
 export const authStart = () => {
@@ -7,11 +8,11 @@ export const authStart = () => {
   };
 };
 
-export const authSuccess = (idToken, userId) => {
+export const authSuccess = (token, userId) => {
   return {
     type: actionTypes.AUTH_SUCCESS,
-    idToken,
-    userId,
+    idToken: token,
+    userId: userId,
   };
 };
 
@@ -25,12 +26,12 @@ export const authFail = error => {
 export const logout = () => {
   localStorage.removeItem('token');
   localStorage.removeItem('expirationDate');
-  localStorage.removeItem('localId');
-
+  localStorage.removeItem('userId');
   return {
     type: actionTypes.AUTH_LOGOUT,
   };
 };
+
 export const checkAuthTimeout = expirationTime => {
   return dispatch => {
     setTimeout(() => {
@@ -38,19 +39,20 @@ export const checkAuthTimeout = expirationTime => {
     }, expirationTime * 1000);
   };
 };
+
 export const auth = (email, password, isSignup) => {
   return dispatch => {
     dispatch(authStart());
     const authData = {
-      email,
-      password,
+      email: email,
+      password: password,
       returnSecureToken: true,
     };
     let url =
-      'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAUJ-gnuo3dM_FHRveVDwcAQFyyGAcRvtI';
+      'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyB5cHT6x62tTe-g27vBDIqWcwQWBSj3uiY';
     if (!isSignup) {
       url =
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAUJ-gnuo3dM_FHRveVDwcAQFyyGAcRvtI';
+        'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyB5cHT6x62tTe-g27vBDIqWcwQWBSj3uiY';
     }
     axios
       .post(url, authData)
@@ -61,7 +63,6 @@ export const auth = (email, password, isSignup) => {
         localStorage.setItem('token', response.data.idToken);
         localStorage.setItem('expirationDate', expirationDate);
         localStorage.setItem('userId', response.data.localId);
-
         dispatch(authSuccess(response.data.idToken, response.data.localId));
         dispatch(checkAuthTimeout(response.data.expiresIn));
       })
@@ -74,7 +75,7 @@ export const auth = (email, password, isSignup) => {
 export const setAuthRedirectPath = path => {
   return {
     type: actionTypes.SET_AUTH_REDIRECT_PATH,
-    path,
+    path: path,
   };
 };
 

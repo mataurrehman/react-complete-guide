@@ -21,7 +21,6 @@ export class BurgerBuilder extends Component {
   };
 
   componentDidMount() {
-    console.log(this.props);
     this.props.onInitIngredients();
   }
 
@@ -78,8 +77,8 @@ export class BurgerBuilder extends Component {
             disabled={disabledInfo}
             purchasable={this.updatePurchaseState(this.props.ings)}
             ordered={this.purchaseHandler}
-            price={this.props.price}
             isAuth={this.props.isAuthenticated}
+            price={this.props.price}
           />
         </Aux>
       );
