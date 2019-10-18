@@ -5,7 +5,7 @@ import List from './List';
 import { useFormInput } from '../hooks/forms';
 
 const todo = props => {
-  const [inputIsValid, setInputIsValid] = useState(false);
+  // const [inputIsValid, setInputIsValid] = useState(false);
   // const [todoName, setTodoName] = useState('');
   // const [submittedTodo, setSubmittedTodo] = useState(null);
   // const [todoList, setTodoList] = useState([]);
@@ -44,17 +44,17 @@ const todoInput = useFormInput();
     };
   }, []);
 
-  const mouseMoveHandler = event => {
-    console.log(event.clientX, event.clientY);
-  };
+  // const mouseMoveHandler = event => {
+  //   console.log(event.clientX, event.clientY);
+  // };
 
-  const inputValidationHandler = event => {
-    if (event.target.value.trim() === '') {
-      setInputIsValid(false);
-    } else {
-      setInputIsValid(true);
-    }
-  };
+  // const inputValidationHandler = event => {
+  //   if (event.target.value.trim() === '') {
+  //     setInputIsValid(false);
+  //   } else {
+  //     setInputIsValid(true);
+  //   }
+  // };
 
   // useEffect(() => {
   //   document.addEventListener('mousemove', mouseMoveHandler);

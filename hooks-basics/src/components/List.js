@@ -1,7 +1,6 @@
 import React from 'react';
 
 const List = (props) => {
-    console.log('Rendering the List ...');
     return (
         <ul>
         {props.items.map(todo => <li key={todo.id} onClick={props.onClick.bind(this, todo.id)}>{todo.name}</li>)}
